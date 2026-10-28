@@ -1,5 +1,8 @@
 # Partner demonstration · October 28, 2026
 
+## Phone walkthrough
+Open https://kuang1980.github.io/nutrilife-ai/ after deployment succeeds. No laptop server is needed. See PHONE-AND-HOSTING.md for home-screen setup. Rehearse online once before relying on offline caching; phone progress is separate from laptop progress.
+
 ## Before the meeting
 Start with `npm start`, open http://localhost:4173 and keep the terminal running. Reset demo, use one tab, and turn off distracting personal notifications yourself. No login or internet needed. Use the laptop at its normal browser width, or a 390px responsive viewport for the mobile experience. Do not use real calendar or personal nutrition data. Rehearse once with the wrap and once with the salad. Have this script and the repository available locally.
 

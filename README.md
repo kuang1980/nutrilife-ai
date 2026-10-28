@@ -4,6 +4,10 @@
 
 Partner-demo build for **October 28, 2026**. Mobile-first, interactive, dependency-free web prototype. All people, meals, nutrient amounts, calendar events and times are synthetic. The “agent” is a transparent deterministic state machine, not a connected LLM or API.
 
+## Run on your phone
+
+GitHub Pages hosting target: **https://kuang1980.github.io/nutrilife-ai/**. Open it in Safari or Chrome after deployment succeeds; the laptop can be off. See [phone and hosting instructions](docs/PHONE-AND-HOSTING.md) for home-screen setup, offline behavior and updates.
+
 ## Run now
 
 **Quick fallback:** Open `demo.html` directly in a modern browser. It contains the entire working prototype, styles and illustrations in one file. No server is required; file-based storage support varies by browser. The local-server route below is recommended for development and consistent persistence. On macOS you can also double-click `Start Demo.command` to start that server.
@@ -15,7 +19,7 @@ cd /Users/khsu1/Documents/Codex/2026-10-27/referenced-chatgpt-conversation-this-
 npm start
 ```
 
-Open **http://localhost:4173**. Keep the terminal running during your demo. Stop with Ctrl+C. If the port is occupied: `PORT=4174 npm start`. Open the matching URL. Use a desktop browser responsive view at approximately 390px to show the mobile layout, or simply use the full desktop layout. A real phone cannot reach this loopback address directly; use the laptop for the reliable demo.
+Open **http://localhost:4173**. Keep the terminal running during your demo. Stop with Ctrl+C. If the port is occupied: `PORT=4174 npm start`. Open the matching URL. Use a desktop browser responsive view at approximately 390px to show the mobile layout, or simply use the full desktop layout. A real phone cannot reach this loopback address directly; use the hosted HTTPS address on the phone.
 
 ## Three-minute walkthrough
 
@@ -31,7 +35,7 @@ See [the presenter script](docs/DEMO.md) for narration, alternate paths and reco
 
 - Conflict simulation; two selectable alternatives; approval or decline; synchronized plan/reminder changes; simulated reminder; one-time lunch logging with feedback; computed dashboard; timeline audit.
 - Four functional navigation views, meal detail dialogs, exclusion filtering, hydration recording, JSON progress export, browser persistence, reset.
-- Local assets only; service worker caches the shell after the first successful localhost load. No external font/image/CDN. Internet can remain off with the local server running. A warmed service-worker cache adds a fallback if the server stops, but rehearse with the server running. Browser storage failures fall back to in-memory progress with a visible notice.
+- Local assets only; service worker caches the shell after the first successful HTTPS or localhost load. No external font/image/CDN. Internet can remain off with the local server running. A warmed service-worker cache adds a fallback if the server stops, but rehearse with the server running. Browser storage failures fall back to in-memory progress with a visible notice.
 
 ## Boundaries
 
@@ -48,6 +52,7 @@ Not medical advice or a clinical nutrition plan. There is no real calendar conne
 | `server.mjs` | Tiny local static server |
 | `sw.js` | Offline shell cache |
 | `tests/domain.test.js` | Meaningful state and nutrition regression tests |
+| `docs/PHONE-AND-HOSTING.md` | Phone setup, GitHub Pages and deployment updates |
 | `docs/PRODUCT.md` | Requirements, user journeys and acceptance criteria |
 | `docs/COMPETITORS.md` | Evidence-based positioning and differentiation hypothesis |
 | `docs/ARCHITECTURE.md` | Current implementation and proposed production architecture |
@@ -58,7 +63,7 @@ Not medical advice or a clinical nutrition plan. There is no real calendar conne
 
 ## Continue in Codex
 
-Open this **nutrilife-ai** folder as a local Codex project. Start with: “Read AGENTS.md and docs/CODEX-TASKS.md. Implement task 1 and verify its acceptance criteria.” The folder is a standalone local Git repository with a baseline commit; no remote is configured. Publish to your own remote when ready.
+Open this **nutrilife-ai** folder as a local Codex project. Start with: “Read AGENTS.md and docs/CODEX-TASKS.md. Implement task 1 and verify its acceptance criteria.” The folder is a standalone local Git repository with a baseline commit; the publishing target is `kuang1980/nutrilife-ai` on GitHub. The Pages workflow verifies and deploys pushes to `main`.
 
 ```sh
 npm test
@@ -66,7 +71,7 @@ npm run check
 git log --oneline
 ```
 
-The editable app has no build step. Regenerate the portable single-file fallback after changes with `npm run build`. Future hosting can serve this directory as static files. Before changing `sw.js`, increment its cache version when shell assets change; reload while the server is running. For a clean browser rehearsal, reset the demo. If an older shell persists, clear site data for localhost and reload.
+The editable app has no build step. Regenerate the portable single-file fallback after changes with `npm run build`. `npm run build:site` prepares just the hosted web files in `site/`; GitHub Actions deploys that directory. Before changing `sw.js`, increment its cache version when shell assets change; reload while the server is running. For a clean browser rehearsal, reset the demo. If an older shell persists, clear site data for localhost and reload.
 
 ## Verification
 

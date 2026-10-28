@@ -1,0 +1,12 @@
+{
+  "id": "./",
+  "name": "NutriLife AI Demo",
+  "short_name": "NutriLife",
+  "description": "A synthetic nutrition execution demo for busy working adults.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f6f0",
+  "theme_color": "#183e35",
+  "icons": [{"src":"./public/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

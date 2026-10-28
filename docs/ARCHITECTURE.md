@@ -1,7 +1,7 @@
 # Technical architecture
 
 ## Current build
-Dependency-free ES modules, semantic HTML, responsive CSS and original local SVG. Node serves static files on loopback. A pure domain module owns fixtures, transitions and consumed-only totals. The UI reads that state and dispatches intent. Local storage key `nutrilife-demo-v1` persists state; exceptions trigger a visible in-memory fallback. Native dialogs contain detail and logging flows. A same-origin service worker caches only the shell.
+Dependency-free ES modules, semantic HTML, responsive CSS and original local SVG. Node serves static files on loopback. A pure domain module owns fixtures, transitions and consumed-only totals. The UI reads that state and dispatches intent. Local storage key `nutrilife-demo-v1` persists state; exceptions trigger a visible in-memory fallback. Native dialogs contain detail and logging flows. A same-origin, project-scoped service worker caches only the shell. Relative asset URLs support GitHub Pages subdirectories. The mobile manifest supports a standalone home-screen launch.
 
 State machine:
 ```mermaid
@@ -34,3 +34,6 @@ No secrets or credentials. No third-party assets. No application outbound reques
 
 ## Offline behavior
 Internet disconnected + running local server is the primary reliable demo mode. Once the shell is cached, a service-worker fallback can serve it without the server. First-ever loading still requires the server. Browser support/storage policies may disable persistence/caching; keep the demo server running. Network-first shell fetches ease development; bump cache version for release changes. No food images/fonts need the internet.
+
+## Hosted demo
+GitHub Actions verifies the source and deploys only the generated `site/` web assets to GitHub Pages. The public source repository supports ongoing Codex development. Hosted visitors still keep their own synthetic state in browser local storage; there is no shared backend or cross-device sync. See PHONE-AND-HOSTING.md.
